@@ -65,7 +65,7 @@
 START
 
 INIT
-
+    Get app element from DOM
     Create h1 element
     Create zipcode form element
     Create getWeatherBtn
@@ -80,5 +80,23 @@ INIT
     Create an array to hold recently searched zipcode
     Create variable to hold current zipcode to control state
     Create variable to hold error to control error state
+    Create weatherLink variable to hold API link & key
+
+FUNCTIONS
+
+    getWeather =>
+      - Fetches weather data from openweathermap.org
+      - Sets data from API to specific variables
+      - Catches any errors and displays triggers a modal popup 
+        to display to end-user
+
+    zipcodeValidation =>
+      - Only allow getWeather to run IF
+        - Zipcode is 5 digits long and it is a number
+        - If not Modal will display an error
+
+    updateState =>
+      - If API call is good display weather data
+
 
 
