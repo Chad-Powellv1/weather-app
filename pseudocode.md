@@ -79,5 +79,6 @@ INIT
     Create onFocus listener for zipcode element
     Create an array to hold recently searched zipcode
     Create variable to hold current zipcode to control state
+    Create variable to hold error to control error state
 
 
