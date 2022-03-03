@@ -1,3 +1,5 @@
+let getWeatherBtn = document.getElementById('getWeather');
+
 // create variables for zipcode, modalError, and view
 let state = {
 	zipcode: [],
@@ -14,9 +16,10 @@ document.getElementById('zipInput').onchange = function (e) {
 	if (zipcode.length === 5 && isNaN(zipcode) === false) {
 		state.zipcode.push(zipcode);
 		console.log('good zip');
-        return true;
+        getWeather();
+    
 	} else {
-		// display modal
+		// display zip-error
 		console.log('bad zip');
 	}
 };
@@ -56,9 +59,26 @@ const updateView = function (resp) {
         case 0:
             appTitle.style.visibility = 'visible';
             zipInput.style.visibility = 'visible';
-            getWeather.style.visibility = 'visible';
+            getWeatherBtn.style.visibility = 'visible';
             break;
         case 1:
-            appCity.style.visibility = 'visible'
-    }
+            cityDisplay.style.visibility = 'visible';
+            cityDisplay.textContent = city;
+            temp.style.visibility = 'visible';
+            kelvin.textContent = temperature;
+            fahrenheit.textContent = fahrenheit;
+            celsius.textContent = celsius;
+            currentCondition.style.visibility = 'visible';
+            conditions.textContent = weather;
+            image.innerHTML = weatherIcon;
+            break;
+
+        case 2:
+
+
+        
+
+        }
+
+        
 }
