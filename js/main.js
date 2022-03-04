@@ -53,7 +53,7 @@ const updateState = function (data) {
 	let city = data.name;
 	let weather = data.weather[0].description;
 	let icon = data.weather[0].icon;
-	let iconUrl = `https//openweathermap.org/img/wn/${icon}.png`
+	let iconUrl = `https://openweathermap.org/img/wn/${icon}.png`
 
 	// default view
 	appTitle.display = 'block';
@@ -69,7 +69,7 @@ const updateState = function (data) {
 	celsiusText.textContent = `${celsius} ℃`;
 	currentCondition.style.display = 'block';
 	conditions.textContent = weather;
-	imageIcon.innerHTML = `<img src ="${iconUrl}"`;
+	imageIcon.innerHTML = `<img src ="${iconUrl}" />`;
 
 	// modal error view
 };
@@ -84,4 +84,5 @@ document.getElementById('zipInput').addEventListener('click', () => {
 	celsiusText.textContent = '';
 	currentCondition.style.display = 'none';
 	conditions.textContent = '';
+	imageIcon.innerHTML = '';
 });
