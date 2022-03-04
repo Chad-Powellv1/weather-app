@@ -22,6 +22,7 @@ const zipValidation = function () {
 	if (zipcode.length === 5 && isNaN(zipcode) === false) {
 		console.log('good zip');
 		return true;
+		
 	} else {
 		console.log('bad zip');
 	}
@@ -29,23 +30,25 @@ const zipValidation = function () {
 
 // create the axios call function to API
 async function getWeather() {
+
 	try {
 		let resp = await axios.get(
 			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=5e8e7816fa1d045c67283a38b2a5b5a6`
 		);
-		let data = await resp.data;
+		let data = resp.data;
 		updateState(data);
 		console.log(resp);
+
 	} catch (err) {
 		modalError.show();
 		console.log(err);
-		
+		return false;		
 	}
 }
 
 // function allowing end-user to close modal with 'X' inside modal
 let closeModal = () => modalError.hide();
-// modalExit.addEventListener('click', closeModal);
+
 	
 
 // function allowing end-user to close modal with 'Esc' key press
@@ -57,7 +60,7 @@ window.addEventListener('keydown', (e) => {
 
 // create event listener to run zip validation and get weather conditionally
 getWeatherBtn.addEventListener('click', () => {
-	if (zipValidation() === true) {
+	if (zipValidation()) {
 		getWeather();
 	}
 });
@@ -92,6 +95,7 @@ const updateState = function (data) {
 
 };
 
+// event listener function to clear view on click of input field
 document.getElementById('zipInput').addEventListener('click', () => {
     zipInput.value = '';
 	cityDisplay.style.display = 'none';
