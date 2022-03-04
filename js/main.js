@@ -10,6 +10,9 @@ let celsiusText = document.getElementById('celsius');
 let currentCondition = document.getElementById('currentCondition');
 let conditions = document.getElementById('conditions');
 let imageIcon = document.getElementById('image');
+let modalError = new bootstrap.Modal(document.getElementById('modalError'), {
+	keyboard: false
+  })
 let zipcode;
 
 // create function to valid zip
@@ -34,9 +37,23 @@ async function getWeather() {
 		updateState(data);
 		console.log(resp);
 	} catch (err) {
+		modalError.show();
 		console.log(err);
+		
 	}
 }
+
+// function allowing end-user to close modal with 'X' inside modal
+let closeModal = () => modalError.hide();
+// modalExit.addEventListener('click', closeModal);
+	
+
+// function allowing end-user to close modal with 'Esc' key press
+window.addEventListener('keydown', (e) => {
+	if (e.key === 'Escape') {
+		closeModal();
+	}
+});
 
 // create event listener to run zip validation and get weather conditionally
 getWeatherBtn.addEventListener('click', () => {
@@ -45,7 +62,9 @@ getWeatherBtn.addEventListener('click', () => {
 	}
 });
 
+// create a function to control state
 const updateState = function (data) {
+
 	// data variables
 	let temperature = Math.round(data.main.temp);
 	let celsius = Math.round(temperature - 273);
@@ -71,7 +90,6 @@ const updateState = function (data) {
 	conditions.textContent = weather;
 	imageIcon.innerHTML = `<img src ="${iconUrl}" />`;
 
-	// modal error view
 };
 
 document.getElementById('zipInput').addEventListener('click', () => {

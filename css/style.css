@@ -4,7 +4,8 @@ body {
     align-items: center;
     height: 100%vh;
     margin: 0;
-    background-image: url("https://source.unsplash.com/1600x900/?landscape");
+    background-image: url("https://source.unsplash.com/1920x1080/?landscape");
+    background-repeat: no-repeat;
 }
 input:invalid {
     border: 3px solid red;
@@ -22,3 +23,28 @@ input:valid {
 .conditions  {
     color: white;
 }
+
+.modalError {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 22.5%;
+    transform: translate(-50%, 50%);
+    z-index: 1;
+    margin: 15 auto;
+    padding: 25px;
+    width: 25%;
+    background-color: #eeeeee;
+    text-align: left;
+    font-size: 18px;
+    box-shadow: 0 8px 16px 0 rgba(124, 4, 4, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5%;
+}
+
+.modalMessage {
+    margin: 0px auto;
+    padding: 2px;
+    width: 5%;
+
+}
+
