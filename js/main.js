@@ -1,6 +1,17 @@
+// event listeners
 let getWeatherBtn = document.getElementById('getWeather');
+document.getElementById('appTitle').style = appTitle;
+document.getElementById('zipInput').style = zipInput;
+let cityDisplay = document.getElementById('cityDisplay');
+let temp = document.getElementById('temp');
+let kelvin = document.getElementById('kelvin');
+let fahrenheitText = document.getElementById('fahrenheit');
+let celsiusText = document.getElementById('celsius');
+let currentCondition = document.getElementById('currentCondition');
+let conditions = document.getElementById('conditions');
+let imageIcon = document.getElementById('image');
 let zipcode;
-let view = 0;
+
 
 // create function to valid zip
 const zipValidation = function () {
@@ -21,7 +32,8 @@ async function getWeather() {
 
 	try {
 		let resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=5e8e7816fa1d045c67283a38b2a5b5a6`);
-        let data = resp.data;
+        let data = await resp.data;
+        updateState(data)
 		console.log(resp);
 	} catch (err) {
 		console.log(err);
@@ -32,46 +44,63 @@ async function getWeather() {
 getWeatherBtn.addEventListener('click', () => {
     if(zipValidation() === true) {
         getWeather();
+        
     }
 });
 
-// create the function to control the state
 
-// create the function to control the view
-// const updateView = function (resp) {
+const updateState = function (data) {
 
-//     let temperature = resp.main.temp;
-//     let fahrenheit = Math.round((celsius * 1.8) + 32)
-//     let celsius = Math.round(temperature - 273);
-//     let city = resp.name;
-//     let weather = resp.weather[0].description;
-//     let weatherIcon = resp.weather[0].icon;
-
-//     switch (view) {
-
-//         case 0:
-//             appTitle.style.visibility = 'visible';
-//             zipInput.style.visibility = 'visible';
-//             getWeatherBtn.style.visibility = 'visible';
-//             break;
-//         case 1:
-//             cityDisplay.style.visibility = 'visible';
-//             cityDisplay.textContent = city;
-//             temp.style.visibility = 'visible';
-//             kelvin.textContent = temperature;
-//             fahrenheit.textContent = fahrenheit;
-//             celsius.textContent = celsius;
-//             currentCondition.style.visibility = 'visible';
-//             conditions.textContent = weather;
-//             image.innerHTML = weatherIcon;
-//             break;
-
-//         case 2:
+    // data variables
+    let temperature = Math.round(data.main.temp);
+    let celsius = Math.round(temperature - 273);
+    let fahrenheit = Math.round((celsius * 1.8) + 32)
+    let city = data.name;
+    let weather = data.weather[0].description;
+ 
+   
 
 
-        
+    // default view
+    appTitle.display = 'block';
+    zipInput.display = 'block';
+    getWeatherBtn.style.display = 'block';
 
-//         }
+    // weather display
+    cityDisplay.style.display = 'block';
+    cityDisplay.textContent = city;
+    temp.style.display = 'block';
+    kelvin.textContent = `${temperature} °K`;
+    fahrenheitText.textContent = `${fahrenheit} ℉`;
+    celsiusText.textContent = `${celsius} ℃`;
+    currentCondition.style.display = 'block';
+    conditions.textContent = weather;
 
-        
-// }
+
+    // modal error view
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
