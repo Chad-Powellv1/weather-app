@@ -13,7 +13,7 @@
 
 <body>
     <div id="app">
-        <h1 class="text-center display-1 fw-bold mt-5">Weather App</h1>
+        <h1 class="text-center display-1 fw-bold mt-5" id="appTitle">Weather App</h1>
         <div class="container text-center mt-5">
             <div class="row">
               <div class="col-3 offset-2">
@@ -29,19 +29,20 @@
 
     <div class="weather mt-5 text-center">
         <h2 class="d-none city" id="city">City</h2>
-        <div class="cityDisplay hidden" id="cityDisplay"></div>
+        <div class="cityDisplay hidden display-4 fw-bold" id="cityDisplay"></div>
     </div>
-    <div class="temp mt-5 text-center">
-        <h4 class="temp d-none" id="temp">Temperature</h4>
-        <div class="kelvin" id="kelvin"></div>
-        <div class="fahrenheit" id="fahrenheit"></div>
-        <div class="celsius" id="celsius"></div>
+    <div class="row temp mt-5 text-center">
+        <h4 class="col text-center h4 temp d-none" id="temp">Temperature</h4>
+        <div class="col text-center h4 kelvin" id="kelvin"></div>
+        <div class="col text-center h4 fahrenheit" id="fahrenheit"></div>
+        <div class="col text-center h4 celsius" id="celsius"></div>
     </div>
-    <div class="currentCondition d-none mt-5 text-center" id="currentCondition">
-        <h5 class="currentCondition" id="currentCondition">Current Conditions</h5>
-        <div class="conditions" id="conditions"></div>
+    <div class="row mt-5">
+        <h4 class="col text-center h5 d-none" id="currentCondition">Current Conditions</h4>
+        <div class="col text-center h5 conditions" id="conditions"></div>
     </div>
-    <div class="image" id="image"></div>
+    
+    <div class="image text-center mt-5" id="image"></div>
 
 
 
