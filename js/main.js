@@ -52,6 +52,8 @@ const updateState = function (data) {
 	let fahrenheit = Math.round(celsius * 1.8 + 32);
 	let city = data.name;
 	let weather = data.weather[0].description;
+	let icon = data.weather[0].icon;
+	let iconUrl = `https//openweathermap.org/img/wn/${icon}.png`
 
 	// default view
 	appTitle.display = 'block';
@@ -67,6 +69,7 @@ const updateState = function (data) {
 	celsiusText.textContent = `${celsius} ℃`;
 	currentCondition.style.display = 'block';
 	conditions.textContent = weather;
+	imageIcon.innerHTML = `<img src ="${iconUrl}"`;
 
 	// modal error view
 };
