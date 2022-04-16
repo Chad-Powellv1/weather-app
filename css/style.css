@@ -2,11 +2,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%vh;
+    height: 100%;
     margin: 0;
     background-image: url("https://source.unsplash.com/1920x1080/?landscape");
     background-repeat: no-repeat;
 }
+
 input:invalid {
     border: 3px solid red;
 }
