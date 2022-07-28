@@ -4,8 +4,13 @@ body {
     align-items: center;
     height: 100%;
     margin: 0;
-    background-image: url("https://source.unsplash.com/1920x1080/?landscape");
+    background-image: url("https://source.unsplash.com/2160x1440/?landscape");
     background-repeat: no-repeat;
+    -webkit-background-cover: cover;
+    -moz-background-cover: cover;
+    -o-background-cover: cover;
+    background-size: cover;
+
 }
 
 input:invalid {
@@ -16,12 +21,20 @@ input:valid {
     border: 3px solid green;
 }
 
+.card {
+    background-color: rgba(145, 145, 145, 0.527);
+    border-radius: 25px;
+    width: 90%;
+    height: 75%;
+    margin-top: 5%;
+}
+
 .appTitle,
 .cityDisplay,
 .kelvin,
 .fahrenheit,
 .celsius,
-.conditions  {
+.conditions {
     color: white;
 }
 
@@ -49,3 +62,6 @@ input:valid {
 
 }
 
+.modal-body {
+    background-color: rgba(128, 128, 128, 0.573);
+}
